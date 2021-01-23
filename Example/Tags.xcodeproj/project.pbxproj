@@ -280,7 +280,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Tags_Example/Pods-Tags_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Tags_Example/Pods-Tags_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Tags/Tags.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -289,7 +289,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tags_Example/Pods-Tags_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tags_Example/Pods-Tags_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E35C54AB6FFA05738AD604CA /* [CP] Check Pods Manifest.lock */ = {
