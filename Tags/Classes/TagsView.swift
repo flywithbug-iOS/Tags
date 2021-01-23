@@ -263,7 +263,7 @@ public class TagsView: UIView {
             self.lastTagButton?.removeFromSuperview()
             self.lastTagButton = nil
             if let text = self.lastTag {
-                let button = TagButton(type: .system)
+                let button = TagButton(type: .custom)
                 button.delegate = self
                 button.type = .last
                 button.setEntity(title: text)
@@ -329,7 +329,7 @@ public class TagsView: UIView {
     /// append a String as a TagButton
     @discardableResult
     public func append(_ text: String) -> TagButton {
-        let button = TagButton(type: .system)
+        let button = TagButton(type: .custom)
         button.delegate = self
         
         button.setEntity(title: text)
@@ -341,7 +341,7 @@ public class TagsView: UIView {
     /// append a Strings as a TagButtons
     public func append(contentsOf: [String]) {
         for text in contentsOf {
-            let button = TagButton(type: .system)
+            let button = TagButton(type: .custom)
             button.delegate = self
             button.setEntity(title: text)
             self._tagArray.append(button)
@@ -385,7 +385,7 @@ public class TagsView: UIView {
     public func update(_ text: String, at index: Int) -> TagButton? {
         if index < 0 { return nil }
         if self._tagArray.count > index {
-            let button = TagButton(type: .system)
+            let button = TagButton(type: .custom)
             button.delegate = self
             button.setEntity(title: text)
             self._tagArray[index].isHidden = true
@@ -418,7 +418,7 @@ public class TagsView: UIView {
     @discardableResult
     public func insert(_ text: String, at index: Int) -> TagButton {
         if self._tagArray.count > index {
-            let button = TagButton(type: .system)
+            let button = TagButton(type: .custom)
             button.delegate = self
             button.setEntity(title: text)
             self._tagArray.insert(button, at: index < 0 ? 0 : index)
