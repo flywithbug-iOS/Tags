@@ -78,6 +78,7 @@ public struct ButtonOptions {
 protocol TagButtonDelegate: class {
     /// When you touch the button, the function is called.
     func tagButtonAction(_ tagButton: TagButton, type: TagButtonType)
+    func tagButtonLongPressAction(_ tagButton: TagButton, type: TagButtonType)
 }
 
 /// Button Type
@@ -106,7 +107,15 @@ public class TagButton: UIButton {
         size.height += 4
         return size
     }
-    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(longPressAction(recognizer:)))
+        longPress.minimumPressDuration = 0.6
+        addGestureRecognizer(longPress)
+    }
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     //MARK: func
     
     /// Set an option.
@@ -147,6 +156,11 @@ public class TagButton: UIButton {
         
         self.removeTarget(self, action: #selector(self.touchAction(_:)), for: .touchUpInside)
         self.addTarget(self, action: #selector(self.touchAction(_:)), for: .touchUpInside)
+        
+    }
+    
+    @objc func longPressAction(recognizer:UILongPressGestureRecognizer)  {
+        self.delegate?.tagButtonLongPressAction(self, type: self.type)
     }
     
     

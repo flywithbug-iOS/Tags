@@ -24,6 +24,7 @@ import UIKit
 public protocol TagsDelegate: class {
     /// When you touch the button, the function is called.
     func tagsTouchAction(_ tagsView: TagsView, tagButton: TagButton)
+    func tagsLongPressAction(_ tagsView: TagsView, tagButton: TagButton)
     func tagsLastTagAction(_ tagsView: TagsView, tagButton: TagButton)
     func tagsChangeHeight(_ tagsView: TagsView, height: CGFloat)
 }
@@ -31,6 +32,7 @@ public protocol TagsDelegate: class {
 public extension TagsDelegate {
     func tagsTouchAction(_ tagsView: TagsView, tagButton: TagButton) { }
     func tagsLastTagAction(_ tagsView: TagsView, tagButton: TagButton) { }
+    func tagsLongPressAction(_ tagsView: TagsView, tagButton: TagButton){}
     func tagsChangeHeight(_ tagsView: TagsView, height: CGFloat) { }
 }
 
@@ -616,6 +618,13 @@ public class TagsView: UIView {
 
 // MARK: TagButtonDelegate
 extension TagsView: TagButtonDelegate {
+    func tagButtonLongPressAction(_ tagButton: TagButton, type: TagButtonType) {
+        if type == .last || type == .lastCustom {
+        }else{
+            self.delegate?.tagsLongPressAction(self, tagButton: tagButton)
+        }
+    }
+    
     /// button touchUpInside Action
     func tagButtonAction(_ tagButton: TagButton, type: TagButtonType) {
         if type == .last || type == .lastCustom {
